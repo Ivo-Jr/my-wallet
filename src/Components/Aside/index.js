@@ -22,7 +22,7 @@ export default function Aside() {
     <Container>
       <Header>
         <LogoImg src={logoImg} alt="Logo Minha Carteira"/>
-        <Title>Minha Carteira</Title>
+        <Title>My Wallet</Title>
       </Header>
 
       <MenuContainer>
@@ -37,17 +37,17 @@ export default function Aside() {
         
         <MenuLink href="/list/entry-balance">
           <MdArrowUpward />
-          Entrada
+          Entrys
         </MenuLink>
         
         <MenuLink href="/list/exit-balance">
           <MdArrowDownward />
-          Saída
+          Exits
         </MenuLink>
         
         <MenuLink href="#">
           <MdExitToApp />
-          Sair
+          Logout
         </MenuLink>
       </MenuContainer>
     </Container>

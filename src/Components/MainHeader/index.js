@@ -14,7 +14,7 @@ export default function MainHeader() {
       <Toggle/>
       
       <Profile>
-        <Welcome>Olá, {emoji}</Welcome>
+        <Welcome>Hello, {emoji}</Welcome>
         <UserName>Ivo Júnior</UserName>
       </Profile>
     </Container>
