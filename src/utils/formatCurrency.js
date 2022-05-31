@@ -5,7 +5,7 @@ const formatedCurrency = (current) => {
       style: 'currency',
       currency: 'BRL'
     }
-    )
+  )
 }
 
 export default formatedCurrency;
