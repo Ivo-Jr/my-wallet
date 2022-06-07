@@ -13,13 +13,14 @@ import phewImg from '../../assets/grinning.svg'
 
 import { Container, Content } from './styles';
 import PieChartBox from '../../Components/PieChartBox';
+import HistoryBox from '../../Components/HistoryBox';
 
 export default function Dashboard() {
   const [ expensesList, setExpensesList ] = useState([]);
   const [ gainsList, setGainsList ] = useState([]);
   const [ monthSelected, setMonthSelected ] = useState(new Date().getMonth() + 1);
   const [ yearSelected, setYearSelected ] = useState(new Date().getFullYear());
-  const [ messageRecord, setMessageRecord ] = useState('');
+  // const [ messageRecord, setMessageRecord ] = useState('');
 
   const month = useMemo(() => {
     return monthsList.map((month, ind) => {
@@ -177,9 +178,60 @@ export default function Dashboard() {
     
   },[totalEntry, totalExits]);
 
+  const historyData = useMemo(() => {
+      return monthsList.map((_, month) => {
+        let arrayMonth = month + 1
+
+        let amountEntry = 0;
+        gainsList.forEach(gain => {
+          const date = gain.date.split('-');
+          const gainMonth = Number(date[1]);
+          const gainYear = Number(date[0]);
+
+          if(gainMonth === arrayMonth && gainYear === yearSelected) {
+            try {
+              amountEntry += Number(gain.amount);
+            } catch {
+              throw new Error('amountEntry is invalid. AmountEntry must be valid number')
+            }
+          }
+        });
+
+        let amountOutput = 0;
+        expensesList.forEach(expense => {
+          const date = expense.date.split('-');
+          const gainMonth = Number(date[1]);
+          const gainYear = Number(date[0]);
+
+          if(gainMonth === arrayMonth && gainYear === yearSelected) {
+            try {
+              amountOutput += Number(expense.amount);
+            } catch {
+              throw new Error('amountOutput is invalid. amountOutput must be valid number')
+            }
+          }
+        });
+
+        return {
+          monthNumber: month,
+          month: monthsList[month].substr(0, 3),
+          amountEntry,
+          amountOutput
+        }
+
+      }).filter(item => {
+        const currentMonth = new Date().getMonth();
+        const currentYear = new Date().getFullYear();
+
+        return ((currentYear === yearSelected && item.monthNumber <= currentMonth)
+          ||(yearSelected < currentYear)
+        )
+      })
+  },[gainsList, expensesList, yearSelected])
+
   useEffect(() => {
     handleMockedApiData();
-  },[])
+  },[]);
 
   return (
     <Container>
@@ -227,6 +279,12 @@ export default function Dashboard() {
         />
 
         <PieChartBox data={relativeExpensesVersusGains}/>
+
+        <HistoryBox 
+          data={historyData} 
+          lineColorAmountOutput="#E44C4E" 
+          lineColorAmountEntry="#F7931B" 
+        />
 
       </Content>
     </Container>
