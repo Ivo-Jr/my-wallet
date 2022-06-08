@@ -34,13 +34,15 @@ export const Header = styled.header`
     }
 `;
 
-export const LegendContainer = styled.div`
+export const LegendContainer = styled.ul`
   display: flex;
   align-items: center;
   margin-right: 5px;
+  
+  list-style: none;
 `;
 
-export const Legend = styled.div`
+export const Legend = styled.li`
   display: flex;
   align-items: center;
 

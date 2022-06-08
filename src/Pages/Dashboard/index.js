@@ -6,14 +6,16 @@ import SelectInput from '../../Components/SelectInput';
 import WalletBox from '../../Components/WalletBox';
 import api from '../../services/api';
 
+import PieChartBox from '../../Components/PieChartBox';
+import HistoryBox from '../../Components/HistoryBox';
+import BarChartBox from '../../Components/BarChartBox';
 import monthsList from '../../utils/months';
 import happyImg from '../../assets/happy.svg';
 import sadImg from '../../assets/sad.svg'
 import phewImg from '../../assets/grinning.svg'
+import opsImg from '../../assets/ops.svg'
 
 import { Container, Content } from './styles';
-import PieChartBox from '../../Components/PieChartBox';
-import HistoryBox from '../../Components/HistoryBox';
 
 export default function Dashboard() {
   const [ expensesList, setExpensesList ] = useState([]);
@@ -130,6 +132,14 @@ export default function Dashboard() {
   },[totalEntry, totalExits]);
 
   const mesage = useMemo(() => {
+    if(totalEntry === 0 && totalExits === 0){
+      return {
+        title: "Op's!",
+        description: 'In this month there is not record inputs and outputs.',
+        footerText: "You don't seem to have records on month and year selected.",
+        icon: opsImg
+      }
+    }
     if(totalBalance > 0){
       return {
         title: 'Very well!',
@@ -141,37 +151,37 @@ export default function Dashboard() {
       return {
         title: 'Phew!',
         description: 'This month you spent exactly what you earned',
-        footerText: 'Be careful, and in next month, try save your money',
+        footerText: 'Be careful, and in next month, try save your money.',
         icon: phewImg
       }
     } else {
       return {
         title: 'Who sad!',
-        description: 'This month you spent more that you should',
-        footerText: 'Check your expenses and try to cut something',
+        description: 'This month you spent more that you should.',
+        footerText: 'Check your expenses and try to cut something.',
         icon: sadImg
       }
     }
 
-  }, [totalBalance]);
+  }, [totalBalance, totalExits, totalEntry]);
 
   const relativeExpensesVersusGains = useMemo(() => {
     const total = totalEntry + totalExits;
-    const percentGains = (totalEntry / total) * 100;
-    const percentExpenses = (totalExits / total) * 100;
+    const percentGains = Number(((totalEntry / total) * 100).toFixed(0));
+    const percentExpenses = Number(((totalExits / total) * 100).toFixed(0));
 
     return [
       {
         name: 'Entry',
         value: totalEntry,
-        percent: `${Number(percentGains.toFixed(0))}%`,
+        percent: percentGains ? percentGains : 0,
         color: '#F7931B'
 
       },
       {
         name: 'Exitis',
         value: totalExits,
-        percent: `${Number(percentExpenses.toFixed(0))}%`,
+        percent: percentExpenses ? percentExpenses : 0,
         color: '#E44C4E'
       }
     ];
@@ -227,7 +237,91 @@ export default function Dashboard() {
           ||(yearSelected < currentYear)
         )
       })
-  },[gainsList, expensesList, yearSelected])
+  },[gainsList, expensesList, yearSelected]);
+
+  const relationExpensevesRecurrentVersusEventual = useMemo(() => {
+    let amountRecurrent = 0;
+    let amountEventual = 0;
+
+    expensesList.filter((expense) => {
+      const date = expense.date.split('-');
+      const month = Number(date[1]);
+      const year = Number(date[0]);
+
+      return (month === monthSelected && year === yearSelected)
+    })
+    .forEach((expense) => {
+      if(expense.frequency === 'recurrent') {
+        amountRecurrent += Number(expense.amount)
+      }
+
+      if(expense.frequency === 'eventual') {
+        return amountEventual += Number(expense.amount)
+      }
+    })
+
+    const total = amountRecurrent + amountEventual;
+    const percentRecurrent = Number(((amountRecurrent / total) * 100).toFixed(0));
+    const percentEventual = Number(((amountEventual / total) * 100).toFixed(0));
+    
+    return [
+      {
+        name: 'Recurrent',
+        amount: amountRecurrent,
+        percent: percentRecurrent ? percentRecurrent : 0,
+        color: '#F7931B',
+      },
+      {
+        name: 'Eventual',
+        amount: amountEventual,
+        percent: percentEventual ? percentEventual : 0,
+        color: '#E44C4E',
+      },
+    ]
+
+  },[expensesList, monthSelected, yearSelected]);
+  
+  const relationGainsRecurrentVersusEventual = useMemo(() => {
+    let amountRecurrent = 0;
+    let amountEventual = 0;
+
+    gainsList.filter((gain) => {
+      const date = gain.date.split('-');
+      const month = Number(date[1]);
+      const year = Number(date[0]);
+
+      return (month === monthSelected && year === yearSelected)
+    })
+    .forEach((gain) => {
+      if(gain.frequency === 'recurrent') {
+        amountRecurrent += Number(gain.amount)
+      }
+
+      if(gain.frequency === 'eventual') {
+        return amountEventual += Number(gain.amount)
+      }
+    })
+
+    const total = amountRecurrent + amountEventual;
+    let percentRecurrent = Number(((amountRecurrent / total) * 100).toFixed(0));
+    let percentEventual = Number(((amountEventual / total) * 100).toFixed(0));
+
+    return [
+      {
+        name: 'Recurrent',
+        amount: amountRecurrent,
+        percent: percentRecurrent ? percentRecurrent : 0,
+        color: '#F7931B',
+      },
+      {
+        name: 'Eventual',
+        amount: amountEventual,
+        percent: percentEventual ? percentEventual : 0,
+        color: '#E44C4E',
+      },
+    ]
+
+  },[gainsList, monthSelected, yearSelected]);
 
   useEffect(() => {
     handleMockedApiData();
@@ -284,6 +378,16 @@ export default function Dashboard() {
           data={historyData} 
           lineColorAmountOutput="#E44C4E" 
           lineColorAmountEntry="#F7931B" 
+        />
+
+        <BarChartBox 
+          title={'Exits'}
+          data={relationExpensevesRecurrentVersusEventual}
+        />
+
+        <BarChartBox 
+          title={'Entry'}
+          data={relationGainsRecurrentVersusEventual}
         />
 
       </Content>

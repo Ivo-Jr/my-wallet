@@ -17,7 +17,7 @@ const PieChartBox = ({ data }) => {
           {
             data.map((item, ind) => (
               <Legend key={ind} color={item.color}>
-                <div>{item.percent}</div>
+                <div>{item.percent}%</div>
                 <span>{item.name}</span>
               </Legend>
             ))
