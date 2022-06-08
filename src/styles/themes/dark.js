@@ -1,5 +1,5 @@
 export const dark = {
-  tile: 'dark',
+  title: 'dark',
 
   color: {
     primary: '#1B1F38',

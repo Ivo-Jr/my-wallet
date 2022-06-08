@@ -1,4 +1,4 @@
-import React, {useMemo, useState, useEffect} from 'react';
+import React, {useMemo, useState, useEffect, useCallback} from 'react';
 
 import ContentHeader from '../../Components/ContantHeader';
 import MessageBox from '../../Components/MessageBox';
@@ -68,19 +68,22 @@ export default function Dashboard() {
     }
   }
 
-  const handleMonthSelected = (month) => {
+  const handleMonthSelected = useCallback((month) => {
     if (month) {
       const parseMonth = Number(month);
       setMonthSelected(parseMonth);
     }
-  }
+  },[])
 
-  const handleYearSelected = (year) => {
-    if (year) {
+  const handleYearSelected = useCallback((year) => {
+    try {
       const parseYear = Number(year);
       setYearSelected(parseYear);
+    } 
+    catch {
+      throw new Error('Invalid year value. Is accept integer numbers.')
     }
-  }
+  },[])
 
   const totalExits = useMemo(() => {
     let total = 0;
@@ -329,7 +332,7 @@ export default function Dashboard() {
 
   return (
     <Container>
-      <ContentHeader title="Dashboard" lineColor="#fff">
+      <ContentHeader title="Dashboard" lineColor={props => props.theme.color.info}>
         <SelectInput 
           options={month} 
           onChange={(e) => handleMonthSelected(e.target.value)} 

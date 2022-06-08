@@ -1,16 +1,17 @@
-import { ThemeProvider } from 'styled-components';
 import GlobalStyles from './styles/GlobalStyles';
-import { dark } from './styles/themes/dark'
+import ThemeProvider from './hooks/theme';
+import Layout from './Layout';
 
 import Routes from './Router';
 
 export const App = () => {
+
   return(
-    <>
-      <ThemeProvider theme={dark}>
+    <ThemeProvider>
+      <Layout>
         <GlobalStyles/>
         <Routes />
-      </ThemeProvider>
-    </>
+      </Layout>
+  </ThemeProvider>
   )
 }

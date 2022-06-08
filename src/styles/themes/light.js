@@ -1,13 +1,13 @@
 export const light = {
-  tile: 'light',
+  title: 'light',
 
   color: {
     primary: '#DCDCDC',
-    secondary: '#FFFFFF',
-    tertiary: '#F5F5F5',
+    secondary: '#eee',
+    tertiary: '#F5F5F6',
 
     white: '#333',
-    black: '#fff',
+    black: '#eee',
     gray: '#BFBFBF',
 
     success: '#03BB85',

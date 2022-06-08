@@ -18,42 +18,42 @@ import {
 } from './styles';
 
 const BarChartBox = ({ data, title }) => (
-    <Container>
-      <SideLeft>
-        <h2>{title}</h2>
+  <Container>
+    <SideLeft>
+      <h2>{title}</h2>
 
-        <LegendContainer>
-          {
-            data.map((item, ind) => (
-              <Legend key={ind} color={item.color}>
-                <div>{item.percent}%</div>
-                <span>{item.name}</span>
-              </Legend>
-            ))
-          }
-        </LegendContainer>
-      </SideLeft>
+      <LegendContainer>
+        {
+          data.map((item, ind) => (
+            <Legend key={ind} color={item.color}>
+              <div>{item.percent}%</div>
+              <span>{item.name}</span>
+            </Legend>
+          ))
+        }
+      </LegendContainer>
+    </SideLeft>
 
-      <SideRight>
-        <ResponsiveContainer>
-          <BarChart data={data} >
-            <Bar dataKey="amount">
-              {data.map((indicator) => (
-                <Cell 
-                  key={indicator.name} 
-                  fill={indicator.color}
-                  cursor="pointer"
-                />
-              ))}
-            </Bar>
-            <Tooltip 
-              formatter={(value) => formatCurrency(Number(value))}
-              cursor={false}
-            />
-          </BarChart>
-        </ResponsiveContainer>
-      </SideRight>
-    </Container>
+    <SideRight>
+      <ResponsiveContainer>
+        <BarChart data={data} >
+          <Bar dataKey="amount">
+            {data.map((indicator) => (
+              <Cell 
+                key={indicator.name} 
+                fill={indicator.color}
+                cursor="pointer"
+              />
+            ))}
+          </Bar>
+          <Tooltip 
+            formatter={(value) => formatCurrency(Number(value))}
+            cursor={false}
+          />
+        </BarChart>
+      </ResponsiveContainer>
+    </SideRight>
+  </Container>
 )
 
 export default BarChartBox;
