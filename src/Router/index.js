@@ -1,9 +1,11 @@
 import React from 'react';
 
-import App from './app.routes';
+// import App from './app.routes';
+import Auth from './auth.routes';
 
 export default function Routes() {
   return(
-    <App />
+    <Auth />
+    // <App />
   )
 }

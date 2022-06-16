@@ -14,14 +14,14 @@ export default function Toggle() {
 
   return(
     <Container>
-      <ToggleLabel>Light</ToggleLabel>
+      <ToggleLabel>Dark</ToggleLabel>
         <ToggleSelector 
           checked={checked}
           uncheckedIcon={false}
           checkedIcon={false}
           onChange={() => handleToggleCheck()}
         />
-      <ToggleLabel>Dark</ToggleLabel>
+      <ToggleLabel>Light</ToggleLabel>
     </Container>
   );
 }
