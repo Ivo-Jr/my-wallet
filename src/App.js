@@ -3,14 +3,17 @@ import ThemeProvider from './hooks/theme';
 import Layout from './Layout';
 
 import Routes from './Router';
+import AuthProvider from './hooks/auth';
 
 export const App = () => {
 
   return(
     <ThemeProvider>
       <Layout>
-        <GlobalStyles/>
-        <Routes />
+        <AuthProvider>
+          <GlobalStyles/>
+          <Routes />
+        </AuthProvider>
       </Layout>
   </ThemeProvider>
   )
