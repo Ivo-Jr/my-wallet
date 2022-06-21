@@ -5,8 +5,10 @@ import {
   LogoImg,
   Title,
   MenuContainer,
-  MenuLink
 } from './styles.js';
+
+import { Link } from 'react-router-dom';
+import { useAuth } from '../../hooks/auth';
 
 import { 
   MdDashboard, 
@@ -18,6 +20,8 @@ import {
 import logoImg from "../../assets/logo.svg"
 
 export default function Aside() {
+  const { signOut } = useAuth();
+
   return (
     <Container>
       <Header>
@@ -26,29 +30,26 @@ export default function Aside() {
       </Header>
 
       <MenuContainer>
-        <MenuLink href="/dashboard">
+        <Link to='/'>
           <MdDashboard />
           Dashboard
-        </MenuLink>
+        </Link>
 
-        {/* <MenuLink href="#">
-          Novo Registro
-        </MenuLink> */}
-        
-        <MenuLink href="/list/entry-balance">
+        <Link to='/list/entry-balance' >
           <MdArrowUpward />
-          Entrys
-        </MenuLink>
+            Entrys
+        </Link>
         
-        <MenuLink href="/list/exit-balance">
+
+        <Link to='/list/exit-balance' >
           <MdArrowDownward />
           Exits
-        </MenuLink>
-        
-        <MenuLink href="#">
+        </Link>
+
+        <Link to='#' onClick={signOut}>
           <MdExitToApp />
           Logout
-        </MenuLink>
+        </Link>
       </MenuContainer>
     </Container>
   )

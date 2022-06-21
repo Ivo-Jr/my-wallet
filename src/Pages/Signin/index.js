@@ -15,8 +15,13 @@ import {
 export default function Signin() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-
   const { signIn } = useAuth();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    signIn(email, password);
+  }  
 
   return (
     <Container>
@@ -25,8 +30,8 @@ export default function Signin() {
         <h3>My Wallet</h3>
       </Logo>
 
-      <Form onSubmit={() => signIn(email, password)}>
-        <FormTitle> Log In </FormTitle> 
+      <Form onSubmit={(e) => handleLogin(e)}>
+        <FormTitle> Sign In </FormTitle> 
           <InputComponent 
             type={'email'}
             placeholder={'e-mail'}
@@ -41,7 +46,7 @@ export default function Signin() {
           />
 
           <Button type='submit'>
-            Acessar
+            Login
           </Button>
       </Form>
 

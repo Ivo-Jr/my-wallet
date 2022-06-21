@@ -120,7 +120,7 @@ export default function List() {
   
   useEffect(() => {
     handleMockedApiData();
-  }, [monthSelected, yearSelected, selectedFrequency]);
+  }, [monthSelected, yearSelected, selectedFrequency, params.type]);
 
   return(
     <Container>

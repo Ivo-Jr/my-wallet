@@ -4,14 +4,19 @@ const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
   const [logged, setLogged] = useState(() => {
-    const isLogged = localStorage.getItem('@my-wallet:logged');
+    // const isLogged = localStorage.getItem('@my-wallet:logged');
+    // return !!isLogged;
+    const user = sessionStorage.getItem('@my-wallet:user');
 
-    return !!isLogged;
+    if(user) {
+      return user
+    }
   });
 
   const signIn = (email, password) => {
     if(email === 'ivo@gmail.com' && password === '123'){
-      sessionStorage.setItem('@my-wallet:logged', true);
+      // sessionStorage.setItem('@my-wallet:logged', true);
+      sessionStorage.setItem('@my-wallet:user', true);
       setLogged(true);
     }else {
       alert('Password or user ivalid!')
@@ -19,7 +24,8 @@ export default function AuthProvider({ children }) {
   }
 
   const signOut = () => {
-    sessionStorage.removeItem('@my-wallet:logged', true);
+    // sessionStorage.removeItem('@my-wallet:logged');
+    sessionStorage.removeItem('@my-wallet:user');
     setLogged(false);
 
   }

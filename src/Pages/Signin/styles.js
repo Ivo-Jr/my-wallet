@@ -69,6 +69,7 @@ export const FormTitle = styled.h1`
     content: '';
     display: block;
     width: 55px;
+    height: 3px;
     border-bottom: 8px solid ${props => props.theme.color.warning}
   }
 `;
