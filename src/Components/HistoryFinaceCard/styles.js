@@ -1,4 +1,18 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const animate = keyframes`
+  0%{
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  50%{
+    opacity: .3;
+  }
+  100%{
+    transform: translateX(0px);
+    opacity: 1;
+  }
+`;
 
 export const Container = styled.li`
   background: ${props => props.theme.color.tertiary};
@@ -17,6 +31,8 @@ export const Container = styled.li`
   transition: all 0.3s;
 
   position: relative;
+
+  animation: ${animate} .3s ease-in;
 
   &:hover {
     opacity: .7;

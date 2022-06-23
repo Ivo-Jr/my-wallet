@@ -1,4 +1,18 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const animate = keyframes`
+  0%{
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  50%{
+    opacity: .3;
+  }
+  100%{
+    transform: translateX(0px);
+    opacity: 1;
+  }
+`;
 
 export const Container = styled.aside`
   display: flex;
@@ -12,6 +26,8 @@ export const Container = styled.aside`
   border-radius: 7px;
 
   margin: 25px 0;
+
+  animation: ${animate} .5s;
 
   @media(max-width: 770px){
     display: flex;
