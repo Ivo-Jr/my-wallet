@@ -7,6 +7,10 @@ export const Container = styled.div`
   justify-content: space-between;
 
   margin-bottom: 25px;
+
+  @media(max-width: 380px){
+    flex-direction: column;
+  }
 `;
 
 export const TitleContainer = styled.div`
@@ -21,8 +25,30 @@ export const TitleContainer = styled.div`
     }
   }
 
+  @media(max-width: 420px){
+    > h1 {
+      font-size: 1.55rem;
+
+      &::after {
+      content: '';
+      display: block;
+      width: 55px;
+      border-bottom: 5px solid ${props => props.lineColor}; 
+    }
+
+    }
+  }
+
 `;
 
 export const Controller = styled.div`
   display: flex;
+
+  @media(max-width: 380px){
+    width: 100%;
+
+    justify-content: space-evenly;
+
+    margin-top: 20px;
+  }
 `;
