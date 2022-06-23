@@ -12,6 +12,14 @@ export const Container = styled.div`
   color: ${props => props.theme.color.white};
 
   border-radius: 7px;
+
+  @media(max-width: 940px) {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: auto;
+  }
 `;
 
 export const SideLeft = styled.aside`
@@ -25,6 +33,11 @@ export const SideLeft = styled.aside`
   h2 {
     padding-left: 16px;
     margin-bottom: 10px;
+  }
+
+  @media(max-width: 940px){
+    padding-bottom: 0px;
+    height: auto;
   }
 `;
 
@@ -46,6 +59,18 @@ export const LegendContainer = styled.ul`
 
   ::-webkit-scrollbar-track {
     background: ${props => props.theme.color.tertiary}
+  }
+
+  @media(max-width: 1345px){
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media(max-width: 940px){
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
   }
 `;
 
@@ -83,6 +108,36 @@ export const Legend = styled.li`
     height: 47px;
     width: 47px;
   }
+
+  @media(max-width: 940px){
+    & + li {
+      margin-top: 0px;
+    }
+
+    > div {
+      height: 38px;
+      width: 38px;
+
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+  }
+
+  @media(max-width: 145px){
+    font-size: 14px;
+    margin: 3px 0;
+
+    > div {
+      height: 35px;
+      width: 35px;
+      line-height: 35px;
+    }
+
+    > span {
+      margin-left: 7px;
+    }
+  }
 `;
 
 export const SideRight = styled.main`
@@ -94,5 +149,9 @@ export const SideRight = styled.main`
   min-height: 150px;
 
   padding: 30px 20px;
+
+  @media(max-width: 1345px){
+    height: 100%;
+  }
 `;
 

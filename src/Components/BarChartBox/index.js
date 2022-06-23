@@ -21,7 +21,7 @@ const BarChartBox = ({ data, title }) => (
   <Container>
     <SideLeft>
       <h2>{title}</h2>
-
+      
       <LegendContainer>
         {
           data.map((item, ind) => (

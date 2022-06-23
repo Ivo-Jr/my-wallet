@@ -4,7 +4,7 @@ import { useTheme } from '../../hooks/theme';
 import { Container, ToggleLabel, ToggleSelector} from './styles';
 
 export default function Toggle() {
-  const [checked, setchecked] = useState(false);
+  const [ checked, setchecked ] = useState(false);
   const { toggleTheme } = useTheme();
 
   const handleToggleCheck = () => {

@@ -20,7 +20,6 @@ export const ChartContainer = styled.div`
   height: 260px;
 `;
 
-
 export const Header = styled.header`
   width: 100%;
 
@@ -32,6 +31,10 @@ export const Header = styled.header`
       margin-bottom: 20px;
       padding-left: 16px;
     }
+
+  @media(max-width: 1200px){
+    flex-direction: column;
+  }
 `;
 
 export const LegendContainer = styled.ul`
@@ -40,6 +43,11 @@ export const LegendContainer = styled.ul`
   margin-right: 5px;
   
   list-style: none;
+
+  @media(max-width: 1200px){
+    padding-left: 16px;
+    margin-bottom: 8px;
+  }
 `;
 
 export const Legend = styled.li`
@@ -62,5 +70,10 @@ export const Legend = styled.li`
     border-radius: 7px;
   }
 
-
+  @media(max-width: 1200px){
+    > div {
+      width: 30px;
+      height: 30px;
+    }
+  }
 `;

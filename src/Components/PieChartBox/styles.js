@@ -12,14 +12,35 @@ export const Container = styled.aside`
   border-radius: 7px;
 
   margin: 25px 0;
+
+  @media(max-width: 770px){
+    display: flex;
+    width: 100%;
+  }
 `;
 
 export const SideLeft = styled.aside`
   padding: 30px 20px;
 
   > h2 {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
   }
+  
+  @media(max-width: 1024px){
+    max-width: 50%;
+  };
+
+  @media(min-width: 1440px){
+    h2 {
+      width: 100%;
+    }
+  }
+
+  @media(max-width: 420px){
+    /* padding: 15px; */
+    margin-bottom: 7px;
+  }
+
 `;
 
 export const LegendContainer = styled.ul`
