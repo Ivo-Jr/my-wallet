@@ -11,6 +11,13 @@ export const Container = styled.div`
   padding: 0 10px;
 
   border-bottom: 1px solid ${props => props.theme.color.gray};
+
+    div:first-child {
+      @media(max-width: 650px){
+      visibility: hidden;
+    }
+  }
+
 `;
 
 export const Profile = styled.div`
@@ -23,6 +30,6 @@ export const Profile = styled.div`
   color: ${props => props.theme.color.white};
 `;
 
-export const Welcome = styled.div``;
+export const Welcome = styled.p``;
 
-export const UserName = styled.div``;
+export const UserName = styled.p``;

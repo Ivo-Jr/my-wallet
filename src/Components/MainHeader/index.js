@@ -1,5 +1,10 @@
 import React, {useMemo} from 'react';
-import { Container, Profile, Welcome, UserName } from './styles.js';
+import { 
+  Container,
+  Profile, 
+  Welcome, 
+  UserName, 
+} from './styles.js';
 import { emojis } from '../../utils/emojis';
 import Toggle from '../Toggle/index.js';
 

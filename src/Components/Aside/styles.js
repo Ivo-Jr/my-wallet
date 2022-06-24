@@ -1,37 +1,88 @@
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
+
+const animate = keyframes`
+  0%{
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  50%{
+    opacity: .3;
+  }
+  100%{
+    transform: translateX(0px);
+    opacity: 1;
+  }
+`;
 
 export const Container = styled.div`
   grid-area: AS;
+  width: 100%;
+
+  display: flex;
 
   background: ${props => props.theme.color.secondary};
-  padding-left: 20px;
-
   border-right: 1px solid ${props => props.theme.color.gray};
-  /* color: ${props => props.theme.color.white}; */
+
+  padding-left: 20px;
 
   position: relative;
 
   @media(max-width: 650px){
-    padding-left: 12px;
     position: fixed;
     z-index: 2;
+  }
+`;
 
-    width: 170px;
+export const Content = styled.div`
+  @media(max-width: 650px){
+      padding-left: 12px;
+      position: fixed;
+      left: 0px;
 
-    height: ${props => props.menuIsOpen ? '100vh' : '70px'};
-    overflow: hidden;
-    
-    ${props => props.menuIsOpen
+      z-index: 3;
+
+      min-width: 165px;
+
+      background: ${props => props.theme.color.secondary};
+      border-right: 1px solid ${props => props.theme.color.gray};
+
+      height: ${props => props.menuIsOpen ? '100vh' : '70px'};
+      overflow: hidden;
+      
+      ${props => props.menuIsOpen
+        ? css`
+            animation: ${animate} .5s;
+            box-shadow: 0 0 1em black;
+          `
+        : css`
+            border: none;
+            border-bottom: 1px solid ${props => props.theme.color.gray};
+          `
+      }
+    }
+`;
+
+export const Mask = styled.div`
+  @media(max-width: 650px){
+    ${props => props.menuIsOpen 
       ? css`
-        box-shadow: 0 0 1em black;
-        `
+          position: fixed;
+          right: 0px;
+          width: calc(100% - 165px);
+          height: 100vh;
+      
+          animation: ${animate} .5s;
+          
+          background: rgba(0, 0, 0, 0.4);
+          z-index: 2;
+        ` 
       : css`
-        border: none;
-        border-bottom: 1px solid ${props => props.theme.color.gray};
-      `
+          display: none;
+        `
     }
   }
 `;
+
 
 export const Header = styled.header`
   display: flex;
