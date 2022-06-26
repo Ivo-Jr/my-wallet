@@ -50,17 +50,17 @@ export default function Aside() {
         </Header>
 
         <MenuContainer>
-          <Link to='/'>
+          <Link to='/' onClick={handleToggleMenu}>
             <MdDashboard />
             Dashboard
           </Link>
 
-          <Link to='/list/entry-balance' >
+          <Link to='/list/entry-balance' onClick={handleToggleMenu}>
             <MdArrowUpward />
               Entrys
           </Link>
           
-          <Link to='/list/exit-balance' >
+          <Link to='/list/exit-balance' onClick={handleToggleMenu}>
             <MdArrowDownward />
             Exits
           </Link>

@@ -1,11 +1,13 @@
 import React, { createContext, useState, useContext } from 'react';
+import { toast } from 'react-toastify';
+
+import { useTheme } from './theme';
 
 const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
+  const { theme } = useTheme();
   const [logged, setLogged] = useState(() => {
-    // const isLogged = localStorage.getItem('@my-wallet:logged');
-    // return !!isLogged;
     const user = sessionStorage.getItem('@my-wallet:user');
 
     if(user) {
@@ -14,18 +16,24 @@ export default function AuthProvider({ children }) {
   });
 
   const signIn = (email, password) => {
-    if(email === 'ivo@gmail.com' && password === '123'){
-      // sessionStorage.setItem('@my-wallet:logged', true);
+    if(email === 'user@gmail.com' && password === '123'){
       sessionStorage.setItem('@my-wallet:user', true);
       setLogged(true);
+      toast.dismiss();
     }else {
-      alert('Password or user ivalid!')
+      notify();
+      setLogged('invalid');
     }
   }
 
+  const notify = () => toast.error('Password or user ivalid! Please sigin with: email:"user@gmail.com", password: "123"', {
+    theme: theme.title === 'dark' ? 'dark' : 'colored',
+    position: toast.POSITION.BOTTOM_RIGHT
+  });
+
   const signOut = () => {
-    // sessionStorage.removeItem('@my-wallet:logged');
     sessionStorage.removeItem('@my-wallet:user');
+    sessionStorage.removeItem('@my-wallet:sideBarOpen');
     setLogged(false);
 
   }

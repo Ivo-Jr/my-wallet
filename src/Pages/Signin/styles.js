@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   height: 100vh;
@@ -53,8 +53,10 @@ export const Form = styled.form`
 
   input {
     & + input {
-      margin-bottom: 29px; 
-    }
+          margin-bottom: 29px; 
+        }
+        
+    border: ${props => props.logged === 'invalid' && '2px solid red'}
   }
 `;
 

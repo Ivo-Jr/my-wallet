@@ -1,16 +1,16 @@
 const MonthsList = [
-  'Janeiro',
-  'Fervereiro',
-  'Março',
-  'Abril',
-  'Maio',
-  'Junho',
-  'Julho',
-  'Agosto',
-  'Setembro',
-  'Outubro',
-  'Novembro',
-  'Dezembro',
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'Octuber',
+  'November',
+  'December',
 ];
 
 export default MonthsList;

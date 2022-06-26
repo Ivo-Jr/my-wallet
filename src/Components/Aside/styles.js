@@ -122,15 +122,18 @@ export const MenuContainer = styled.nav`
   a {
     color: ${props => props.theme.color.info};
     text-decoration: none;
+    
+    width: max-content;
 
     margin: 7px 0px;
     display: flex;
     align-items: center;
 
-    transition: opacity .3s;
+    transition: .3s;
 
     &:hover {
-      opacity: 0.7
+      opacity: 0.7;
+      margin-left: 5px;
     }
 
     > svg {
