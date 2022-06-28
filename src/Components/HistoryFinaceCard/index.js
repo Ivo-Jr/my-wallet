@@ -4,14 +4,14 @@ import { Container, Tag } from './styles';
 
 export default function HistoryFinaceCard({ 
   cardColor,
-  tagColor,
+  tagFrequency,
   title,
   subtitle,
   amount  
 }) {
   return (
     <Container color={cardColor}>
-      <Tag color={tagColor}/>
+      <Tag frequency={tagFrequency}/>
         <div>
           <span>{title}</span>
           <small>{subtitle}</small>

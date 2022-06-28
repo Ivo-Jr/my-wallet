@@ -57,7 +57,9 @@ export const Tag = styled.div`
   width: 10px;
   height: 60%;
 
-  background: ${props => props.color};
+  background: ${props => props.frequency === 'recurrent' 
+    ? props.theme.color.success 
+    : props.theme.color.warning};
 
   position: absolute; 
   left: 0;

@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useMatch } from 'react-router-dom';
 
 import api from '../../services/api';
+import { useTheme } from '../../hooks/theme';
 import HistoryFinaceCard from '../../Components/HistoryFinaceCard';
 import ContentHeader from '../../Components/ContantHeader';
 import SelectInput from '../../Components/SelectInput';
@@ -23,6 +24,7 @@ export default function List() {
   const [ selectedFrequency, setSelectedFrequency ] = useState(['recurrent', 'eventual']);
   const [ loading, setLoading ] = useState(false);
 
+  const { theme } = useTheme();
   const { params } = useMatch('list/:type');
   
   const info = useMemo(() => {
@@ -64,7 +66,7 @@ export default function List() {
           type: item.type,
           frequency: item.frequency,
           date: formatDate(item.date),
-          tagColor: item.frequency === 'recurrent' ? '#4E41F0' : '#E44C4E'
+          tagFrequency: item.frequency
         }
       })
 
@@ -165,7 +167,7 @@ export default function List() {
               data.map((item, ind) => (
                 <HistoryFinaceCard
                     key={ind}
-                    tagColor={item.tagColor}
+                    tagFrequency={item.tagFrequency}
                     title={item.description}
                     subtitle={item.date}
                     amount={item.amountFormatted}

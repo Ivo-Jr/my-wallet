@@ -1,70 +1,100 @@
-# Getting Started with Create React App
+<h1 align="center">
+    <img alt="My-wallet" title="Podcastr" src="src/assets/layout/laptopFront.svg" width= "100%"/>
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br>
 
-## Available Scripts
+<p align="center">
+  <img alt="My-wallet" src="src/assets/logo.svg" width="160px">
+</p>
 
-In the project directory, you can run:
+<h4 align="center">
+  A Digital wallet where you can control your account moviments.
+</h4>
 
-### `npm start`
+<p align="center">
+  <a href="#test_tube-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#rocket-Getting-started">Getting started</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#desktop_computer-Project">Project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#bookmark-Layout">Layout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#clapper-Demonstration">Demonstration</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#sunny-result">Result</a>
+</p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## :test_tube: Technologies
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This project was developed using the following technologies:
 
-### `npm test`
+- [React.JS](https://reactjs.org)
+- [Recharts](https://recharts.org/en-US/g)
+- [React Countup](https://www.npmjs.com/package/react-countup)
+- [Styled Components](https://styled-components.com/)
+- [React Switch](https://www.npmjs.com/package/react-switch)
+- [React Toastify](https://www.npmjs.com/package/react-toastify)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## :rocket: Getting started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js v14.17.2][nodejs] or higher + [Yarn v1.22.0][yarn] or higher installed on your computer. From your command line:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Clone the project and access the folder
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+$ https://github.com/Ivo-Jr/my-wallet.git && cd my-wallet
+```
 
-### `npm run eject`
+Follow the steps below
+```bash
+# Install the dependencies
+$ yarn
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Run the JSON server
+$ yarn server
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Start the project
+$ yarn start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## :desktop_computer: Project
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The project is a digital wallet, when users can control your account movement, classify by recurrent and eventual expenses/gains.
 
-## Learn More
+## :bookmark: Layout
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+You can view the project layout through the links below:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [Layout Web](https://www.figma.com/file/nOGmUkhcINJt6nd57R4ENu/Untitled?node-id=0%3A1) 
 
-### Code Splitting
+Remembering that you need to have a [Figma](http://figma.com/) account to access it.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## :clapper: Demonstration
 
-### Analyzing the Bundle Size
+  <div style="display: flex;   flex-direction: column; align-items: center; margin: 15px 0px">
+    <img alt="my-wallet-gif" src="src/assets/movie/my-wallet.gif" width= "100%"/>    
+  </div>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## :sunny: Result
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<h3>Responsive Layout:<h3>
 
-### Advanced Configuration
+  <div style="display: flex;   flex-direction: column;
+  align-items: center;">
+  <h1 align="center" style="display: flex; flex-direction:row;">
+      <img   style="margin: 15px 0px" alt="podcastr-img1" src="src/assets/layout/img4.png" />
+  </h1>     
+  </div>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+  <div style="display: flex;   flex-direction: column;
+  align-items: center;">
+  <h1 align="center" style="display: column; flex-direction:row;">
+      <img   style="margin: 15px 0px" alt="laptop-perspective" src="src/assets/layout/laptopPerspective.svg" />
+      <div style="display: flex">
+        <img   style="margin: 15px 0px" alt="iPad" src="src/assets/layout/iPad.svg" width='230px'/>
+        <img   style="margin: 15px 0px" alt="cell-phone" src="src/assets/layout/cellPhone.svg" width='210px' />
+      </div>
+  </h1>  
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<p align="center">Made with ❤ by Ivo Jr</p>
