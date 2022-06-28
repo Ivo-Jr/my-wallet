@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="My-wallet" title="My-wallet" src="src/assets/layout/laptopFront.svg" width= "100%"/>
+    <img alt="My-wallet" title="My-wallet" src="src/assets/layout/laptopFront.svg" width= "80%"/>
 </h1>
 
 <br>
